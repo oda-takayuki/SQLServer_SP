@@ -6,7 +6,6 @@ CREATE PROCEDURE TestInsert
 	@amount DECIMAL(12,3),
 	@interest_rate DECIMAL(6,3),
 	@ErrorMessage VARCHAR(100) OUTPUT
-
 AS
 BEGIN
 
@@ -29,7 +28,8 @@ BEGIN
 		data_kbn,
 		acct_id,
 		amount,
-		interest_rate
+		interest_rate,
+		create_date
 		)
 
 		VALUES
@@ -37,7 +37,8 @@ BEGIN
 		 @data_kbn,
 		 @acct_id,
 		 @amount,
-		 @interest_rate
+		 @interest_rate,
+		 getdate()
 		 )
 		
 		END
@@ -51,9 +52,7 @@ CREATE PROCEDURE TestUpdate
 	@amount DECIMAL(12,3),
 	@interest_rate DECIMAL(6,3),	
 	@ErrorMessage VARCHAR(100) OUT
-	
 AS
-DECLARE @update_date DATETIME = getdate()
 
 BEGIN
 
@@ -74,7 +73,8 @@ BEGIN
 		UPDATE Test_TBL
 		SET
 		amount = @amount,
-		interest_rate = @interest_rate
+		interest_rate = @interest_rate,
+		update_date = getdate()
 		WHERE user_id = @user_id
 		
 		END
@@ -82,7 +82,7 @@ BEGIN
 END;
 
 
--- DeletÇ∑ÇÈSP
+-- DELETEÇ∑ÇÈSP
 CREATE PROCEDURE TestDelete
 	@user_id VARCHAR,
 	@ErrorMessage VARCHAR(100) OUTPUT

@@ -1,4 +1,4 @@
--- INSERTするSP 動作確認
+-- INSERTするSPの動作確認
 DECLARE @ErrorMessage VARCHAR (100);
 
 EXEC TestInsert
@@ -8,17 +8,17 @@ EXEC TestInsert
 PRINT @ErrorMessage;
 
 
--- UPDATEするSP 動作確認
+-- UPDATEするSPの動作確認
 DECLARE @ErrorMessage VARCHAR (100);
 
 EXEC TestUpdate
-	1, 100, 1.1,
+	1, 1000, 1.2,
 	@ErrorMessage OUTPUT;
 
 PRINT @ErrorMessage;
 
 
--- DELETEするSP 動作確認
+-- DELETEするSPの動作確認
 DECLARE @ErrorMessage VARCHAR (100);
 
 EXEC TestDelete

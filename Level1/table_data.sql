@@ -6,7 +6,7 @@ CREATE TABLE Test_TBL(
 	amount DECIMAL(12, 3) DEFAULT NULL,
 	interest_rate DECIMAL(6, 3) DEFAULT NULL,
 	create_date DATETIME DEFAULT GETDATE(),
-	update_date DATETIME DEFAULT GETDATE(),
+	update_date DATETIME,
 	PRIMARY KEY(user_id)
 	);
 
