@@ -8,41 +8,32 @@ CREATE PROCEDURE TestInsert
 	@ErrorMessage VARCHAR(100) OUTPUT
 AS
 BEGIN
-
 	IF EXISTS
 		(SELECT *
 		 FROM Test_TBL
 		 WHERE user_id = @user_id)
-
 		BEGIN
-
-		SET @ErrorMessage = 'ユーザーIDが重複するため登録できません。';
-
+			SET @ErrorMessage = 'ユーザーIDが重複するため登録できません。';
 		END
-
 	ELSE
 		BEGIN
-
-		INSERT INTO Test_TBL (
-		user_id,
-		data_kbn,
-		acct_id,
-		amount,
-		interest_rate,
-		create_date
-		)
-
-		VALUES
-		(@user_id,
-		 @data_kbn,
-		 @acct_id,
-		 @amount,
-		 @interest_rate,
-		 getdate()
-		 )
-		
+			INSERT INTO Test_TBL (
+			user_id,
+			data_kbn,
+			acct_id,
+			amount,
+			interest_rate,
+			create_date
+			)
+			VALUES
+			(@user_id,
+			 @data_kbn,
+			 @acct_id,
+			 @amount,
+			 @interest_rate,
+			 getdate()
+			 );
 		END
-
 END;
 
 
@@ -51,34 +42,25 @@ CREATE PROCEDURE TestUpdate
 	@user_id VARCHAR(7),
 	@amount DECIMAL(12,3),
 	@interest_rate DECIMAL(6,3),	
-	@ErrorMessage VARCHAR(100) OUT
+	@ErrorMessage VARCHAR(100) OUTPUT
 AS
-
 BEGIN
-
 	IF NOT EXISTS
 		(SELECT *
 		 FROM Test_TBL
 		 WHERE user_id = @user_id)
-
 		BEGIN
-
-		SET @ErrorMessage = 'ユーザーIDが存在しないため更新できません。';
-
+			SET @ErrorMessage = 'ユーザーIDが存在しないため更新できません。';
 		END
-
 	ELSE
 		BEGIN
-
-		UPDATE Test_TBL
-		SET
-		amount = @amount,
-		interest_rate = @interest_rate,
-		update_date = getdate()
-		WHERE user_id = @user_id
-		
+			UPDATE Test_TBL
+			SET
+			amount = @amount,
+			interest_rate = @interest_rate,
+			update_date = getdate()
+			WHERE user_id = @user_id;
 		END
-	
 END;
 
 
@@ -88,25 +70,17 @@ CREATE PROCEDURE TestDelete
 	@ErrorMessage VARCHAR(100) OUTPUT
 AS
 BEGIN
-
 	IF NOT EXISTS
 		(SELECT *
 		 FROM Test_TBL
 		 WHERE user_id = @user_id)
-
 		BEGIN
-
-		SET @ErrorMessage = 'ユーザーIDが存在しないため削除できません。';
-
+			SET @ErrorMessage = 'ユーザーIDが存在しないため削除できません。';
 		END
-
 	ELSE
 		BEGIN
-
-		DELETE
-		FROM Test_TBL
-		WHERE user_id = @user_id;
-
+			DELETE
+			FROM Test_TBL
+			WHERE user_id = @user_id;
 		END
-
 END;
