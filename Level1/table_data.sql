@@ -12,7 +12,7 @@ CREATE TABLE Test_TBL(
 
 -- ƒf[ƒ^‘}“ü
 INSERT INTO
-	Test_TBL (user_id, data_kbn, acct_id, amount, interest_rate)
+	Test_TBL(user_id, data_kbn, acct_id, amount, interest_rate)
 VALUES
 	(1, 1, 1, 1.0, 1.1),
 	(2, 2, 12, 10.0, 1.2),
