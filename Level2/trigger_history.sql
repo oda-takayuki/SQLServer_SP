@@ -1,3 +1,4 @@
+-- INSERT後に履歴テーブルにデータを挿入するトリガー
 CREATE TRIGGER trg_history_insert
 ON test2
 AFTER INSERT
@@ -22,6 +23,8 @@ BEGIN
 	FROM inserted;
 END
 GO
+
+-- UPDATE後に履歴テーブルにデータを挿入するトリガー
 CREATE TRIGGER trg_history_update
 ON test2
 AFTER UPDATE
