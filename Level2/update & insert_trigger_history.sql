@@ -10,8 +10,9 @@ CREATE PROCEDURE test2_update_insert
 AS
 BEGIN TRY
 	BEGIN TRANSACTION
-		DECLARE	@update_date DATETIME = getdate(),
-				@create_date DATETIME = getdate()
+		DECLARE
+			@update_date DATETIME = getdate(),
+			@create_date DATETIME = getdate()
 		MERGE INTO test2 AS A
 			USING (
 				SELECT
