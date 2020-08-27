@@ -26,5 +26,5 @@ CREATE TABLE history(
 	user_id VARCHAR(7) NOT NULL,
 	acct_id VARCHAR(12) NOT NULL,
 	proc_type DECIMAL(1, 0) NOT NULL,
-	create_date DATETIME DEFAULT GETDATE(),
+	create_date DATETIME
 );
